@@ -20,10 +20,7 @@ class ThaiTokenizer(BaseTokenizer):
             ipa = convert_text_to_ipa(text)
             if not ipa:
                 return []
-                
-            # Convert IPA to phoneme
-            phonemes = convert_ipa_to_phonemes(ipa)
-            # Remove word separator tokens for consistency with English tokenizer
-            return [p for p in phonemes if p != '_']
+
+            return convert_ipa_to_phonemes(ipa)
         except Exception as e:
             raise ValueError(f"Failed to phonemize Thai text: {str(e)}")
