@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "transliterate"
+version = "0.1.0"
+description = "A Python library to convert text to phoneme representations."
+authors = ["Thanat Wongsamut <thanat.wongsamut@gmail.com>", "Korawut Sirianuntapat <korawut_s@outlook.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4.0"
+pythainlp = "*"
+tltk = "*"
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+flake8 = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
