@@ -1,7 +1,7 @@
 from transliterate.tokenizer import EnglishTokenizer, ThaiTokenizer, setup_espeak
 
 def main():
-    # Set up espeak library
+    # Set up espeak library (optional)
     _ESPEAK_LIBRARY = '/opt/homebrew/Cellar/espeak/1.48.04_1/lib/libespeak.1.1.48.dylib'
     setup_espeak(_ESPEAK_LIBRARY)
     
