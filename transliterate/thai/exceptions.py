@@ -17,5 +17,10 @@ def exceptionWords(word: str) -> str:
         'ครํ่าหวอด': 'kʰram3.wᴐːt2',
         'เนี่ยะ': 'nia3',
         'สจ๊วร์ต': 'sa2.cuːat4', # referred from 'สจ๊วด'
+        # ทร-
+        'แทรก': 'sɛːk3',
+        'แทรง': 'sɛːŋ1',
+        'โทรม': 'soːm1',
+        'ไทร': 'saj1',
     }
     return dictionary.get(word, '')
