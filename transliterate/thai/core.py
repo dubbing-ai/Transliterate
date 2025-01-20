@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 from pythainlp.transliterate import transliterate
 from pythainlp.tokenize import syllable_tokenize, word_tokenize
 from .exceptions import exceptionWords
@@ -13,33 +13,46 @@ def convert_text_to_ipa(text: str) -> str:
     Returns:
         str: IPA representation of the input text
     """
-    # remove extra whitespaces
     text = ' '.join(text.split())
-
-    texts = word_tokenize(text)
+    words = word_tokenize(text)
     ipa_segments = []
+    regular_syllables = []
     
-    for text in texts:
-        # Split text into syllables
-        syllables = syllable_tokenize(text)
+    def process_regular_syllables():
+        if regular_syllables:
+            combined = ''.join(regular_syllables)
+            if ipa := transliterate(combined, engine='tltk_ipa'):
+                ipa_segments.append(ipa)
+                if regular_syllables[-1] in words[-1]:  # Check if it's end of word
+                    ipa_segments.append('.')
+                else:
+                    ipa_segments.append(' ')
+            regular_syllables.clear()
+
+    for word in words:
+        if word == " ":
+            ipa_segments.append(' ')
+            continue
+
+        for syllable in syllable_tokenize(word):
+            if exception_ipa := exceptionWords(syllable):
+                process_regular_syllables()
+                ipa_segments.extend([exception_ipa, '.'])
+            else:
+                regular_syllables.append(syllable)
         
-        for syllable in syllables:
-            # Check for exception words first
-            ipa_segment = exceptionWords(syllable)
-            
-            if not ipa_segment:
-                # If no exception, use transliteration
-                ipa_segment = transliterate(syllable, engine='tltk_ipa') or exceptionWords(syllable)
-            
-            if ipa_segment:
-                ipa_segments.append(ipa_segment)
-                ipa_segments.append('.')
-
-        if ipa_segments and ipa_segments[-1] == '.':
-            ipa_segments.pop()
-
-        ipa_segments.append(' ')
+        # Process syllables at word boundary
+        if not regular_syllables:
+            if ipa_segments and ipa_segments[-1] == '.':
+                ipa_segments.pop()
+            ipa_segments.append(' ')
     
-    # Join the segments into a final string
-    ipa = ''.join(ipa_segments).strip()
-    return ipa
+    # Process any remaining syllables
+    process_regular_syllables()
+
+    # Remove trailing dot if it exists
+    if ipa_segments and ipa_segments[-1] == '.':
+        ipa_segments.pop()
+    
+    # Clean up final result
+    return ''.join(ipa_segments).strip()
