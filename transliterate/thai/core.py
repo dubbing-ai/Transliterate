@@ -1,4 +1,3 @@
-from typing import List, Tuple
 from pythainlp.transliterate import transliterate
 from pythainlp.tokenize import syllable_tokenize, word_tokenize
 from .exceptions import exceptionWords
