@@ -13,6 +13,9 @@ def convert_text_to_ipa(text: str) -> str:
     Returns:
         str: IPA representation of the input text
     """
+    # remove extra whitespaces
+    text = ' '.join(text.split())
+
     texts = word_tokenize(text)
     ipa_segments = []
     
