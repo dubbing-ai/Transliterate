@@ -1,10 +1,12 @@
 from pythainlp.transliterate import transliterate
 from pythainlp.tokenize import syllable_tokenize
+from transliterate.utils.punctuations import Punctuations
 from .exceptions import exceptionWords
 from .tokenizer import CustomTokenizer
 
 # Initialize CustomTokenizer once at module level
 _custom_tokenizer = CustomTokenizer()
+_punctuations = Punctuations()
 
 def convert_text_to_ipa(text: str, verbose: bool = False) -> str:
     """
@@ -17,6 +19,9 @@ def convert_text_to_ipa(text: str, verbose: bool = False) -> str:
         str: IPA representation of the input text
     """
     text = ' '.join(text.split())
+
+    # Remove all punctuations
+    text = _punctuations.remove_punctuations(text)
 
     # Tokenize text into words
     words = _custom_tokenizer.word_tokenize(text)
