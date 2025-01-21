@@ -5,10 +5,10 @@ from phonemizer.backend.espeak.language_switch import LanguageSwitch
 from phonemizer.backend.espeak.words_mismatch import WordMismatch
 from phonemizer.punctuation import Punctuation
 from phonemizer.separator import Separator
-from .base_tokenizer import BaseTokenizer
+from .base_phonemizer import BasePhonemizer
 
-class EnglishTokenizer(BaseTokenizer):
-    """Tokenizer for English text using Espeak."""
+class EnglishPhonemizer(BasePhonemizer):
+    """Phonemizer for English text using Espeak."""
 
     def __init__(
         self,

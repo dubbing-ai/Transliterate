@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import List, Optional
 
-class BaseTokenizer(ABC):
-    """Base class for text tokenizers."""
+class BasePhonemizer(ABC):
+    """Base class for text phonemizer."""
     
     @abstractmethod
     def phonemize(self, text: str, strip: bool = True) -> List[str]:
