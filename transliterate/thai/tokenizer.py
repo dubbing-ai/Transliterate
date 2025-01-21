@@ -1,6 +1,4 @@
-from typing import Set
-from pythainlp.transliterate import transliterate
-from pythainlp.tokenize import syllable_tokenize, word_tokenize, Tokenizer
+from pythainlp.tokenize import Tokenizer
 from pythainlp.corpus.core import get_corpus
 from pythainlp.util import dict_trie
 
