@@ -23,7 +23,8 @@ def CustomTokenizer() -> Tokenizer:
         'ไฮด์',
         'โกล์ด',
         'โฮล์ม',
-        'ไฟว์'
+        'ไฟว์',
+        'ไซด์'
     }
 
     # Combine core dictionary with custom words
