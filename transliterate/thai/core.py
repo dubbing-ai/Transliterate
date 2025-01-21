@@ -39,7 +39,7 @@ def convert_text_to_ipa(text: str, verbose: bool = False) -> str:
 
     for word in words:
         if verbose:
-            print("word: ", word)
+            print("Processing word: ", word)
         if word == " ":
             process_regular_syllables(is_last_syllable=True, is_word_end=True)
 
@@ -56,7 +56,7 @@ def convert_text_to_ipa(text: str, verbose: bool = False) -> str:
         syllables = syllable_tokenize(word)
         for i, syllable in enumerate(syllables):
             if verbose:
-                print("syllable: ", syllable)
+                print("Processing syllable: ", syllable)
             is_first_syllable = i == 0
             is_last_syllable = i == len(syllables) - 1
 
