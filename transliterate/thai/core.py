@@ -48,6 +48,7 @@ def convert_text_to_ipa(text: str, verbose: bool = False) -> str:
             continue
 
         if ipa := exceptionWords(word):
+            process_regular_syllables(is_last_syllable=True, is_word_end=True)
             ipa_segments.append(ipa)
             ipa_segments.append(' ')
             continue
