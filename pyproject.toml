@@ -6,13 +6,15 @@ authors = ["Thanat Wongsamut <thanat.wongsamut@gmail.com>", "Korawut Sirianuntap
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = ">=3.8,<4.0"
-pythainlp = "*"
-tltk = "*"
+python = ">=3.9,<4.0"
+tltk = "^1.9.1"
+pythainlp = "^5.0.4"
+pandas = "^2.2.3"
 
-[tool.poetry.dev-dependencies]
-pytest = "*"
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
 flake8 = "*"
+pytest-cov = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
