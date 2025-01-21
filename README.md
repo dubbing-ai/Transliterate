@@ -14,8 +14,8 @@ A Python library for converting text into IPA (International Phonetic Alphabet) 
 
 - Python 3.8 or higher
 - eSpeak library (for English phoneme conversion)
-- PyThaiNLP
-- TLTK
+- PyThaiNLP (for Thai language processing)
+- TLTK (for Thai language processing)
 
 ## Installation
 
@@ -37,28 +37,28 @@ poetry install
 ### English Text to Phonemes
 
 ```python
-from transliterate.tokenizer import EnglishTokenizer
+from transliterate.tokenizer import EnglishPhonemizer
 
-# Initialize the tokenizer
-english_tokenizer = EnglishTokenizer()
+# Initialize the phonemizer
+english_phonemizer = EnglishPhonemizer()
 
 # Convert English text to phonemes
 text = "hippopotamus"
-phonemes = english_tokenizer.phonemize(text)
+phonemes = english_phonemizer.phonemize(text)
 print(f"English phonemes: {phonemes}")
 ```
 
 ### Thai Text to Phonemes
 
 ```python
-from transliterate.tokenizer import ThaiTokenizer
+from transliterate.tokenizer import ThaiPhonemizer
 
-# Initialize the tokenizer
-thai_tokenizer = ThaiTokenizer()
+# Initialize the phonemizer
+thai_phonemizer = ThaiPhonemizer()
 
 # Convert Thai text to phonemes
 text = "สวัสดี"
-phonemes = thai_tokenizer.phonemize(text)
+phonemes = thai_phonemizer.phonemize(text)
 print(f"Thai phonemes: {phonemes}")
 ```
 
@@ -75,8 +75,9 @@ setup_espeak('/path/to/libespeak.dylib')
 transliterate/
 ├── thai/
 │   ├── core.py               # Thai text to IPA conversion
-│   └── exceptions.py         # Special case handling for Thai words
-├── tokenizer/
+│   ├── exceptions.py         # Special case handling for Thai words or syllables
+│   └── tokenizer.py          # Custom word tokenization
+├── phonemizer/
 │   ├── __init__.py
 │   ├── base_tokenizer.py     # Abstract base class for tokenizers
 │   ├── english_tokenizer.py  # English language tokenizer
@@ -84,6 +85,7 @@ transliterate/
 │   └── utils.py              # Utility functions
 └── utils/
     ├── phoneme_converter.py  # IPA to phoneme conversion
+    ├── punctuations.py       # Punctuation handling
     └── vowels.py             # Thai vowel configurations
 ```
 
