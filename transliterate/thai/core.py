@@ -61,7 +61,7 @@ def convert_text_to_ipa(text: str, verbose: bool = False) -> str:
             is_last_syllable = i == len(syllables) - 1
 
             if exception_ipa := exceptionWords(syllable):
-                process_regular_syllables(is_last_syllable=(not is_last_syllable), is_word_end=is_first_syllable)
+                process_regular_syllables(is_last_syllable=False, is_word_end=is_first_syllable)
                 # ipa_segments.extend([exception_ipa, '.'])
                 ipa_segments.append(exception_ipa)
                 if not is_last_syllable:
