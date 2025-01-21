@@ -47,6 +47,11 @@ def convert_text_to_ipa(text: str, verbose: bool = False) -> str:
                 ipa_segments.append(' ')
             continue
 
+        if ipa := exceptionWords(word):
+            ipa_segments.append(ipa)
+            ipa_segments.append(' ')
+            continue
+
         syllables = syllable_tokenize(word)
         for i, syllable in enumerate(syllables):
             if verbose:
