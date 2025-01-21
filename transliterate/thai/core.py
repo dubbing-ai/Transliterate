@@ -3,6 +3,9 @@ from pythainlp.tokenize import syllable_tokenize
 from .exceptions import exceptionWords
 from .tokenizer import CustomTokenizer
 
+# Initialize CustomTokenizer once at module level
+_custom_tokenizer = CustomTokenizer()
+
 def convert_text_to_ipa(text: str) -> str:
     """
     Convert Thai text to IPA representation.
@@ -15,8 +18,8 @@ def convert_text_to_ipa(text: str) -> str:
     """
     text = ' '.join(text.split())
 
-    custom_tokenizer = CustomTokenizer()
-    words = custom_tokenizer.word_tokenize(text)
+    # Tokenize text into words
+    words = _custom_tokenizer.word_tokenize(text)
 
     ipa_segments = []
     regular_syllables = []
