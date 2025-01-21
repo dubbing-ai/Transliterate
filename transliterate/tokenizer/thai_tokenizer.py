@@ -27,4 +27,4 @@ class ThaiTokenizer(BaseTokenizer):
 
             return convert_ipa_to_phonemes(ipa)
         except Exception as e:
-            raise ValueError(f"Failed to phonemize Thai text: {str(e)}")
+            raise ValueError(f"Failed to phonemize Thai text {text}: {str(e)}")
