@@ -6,6 +6,9 @@ A Python library for converting text into IPA (International Phonetic Alphabet) 
 
 - English text to phoneme conversion using eSpeak
 - Thai text to IPA and phoneme conversion
+  - Custom word tokenization
+  - Special pronunciation cases
+  - Comprehensive vowel system including monophthongs and diphthongs
 - Modular tokenizer architecture with extensible base classes
 - Support for custom pronunciation exceptions
 - Comprehensive vowel handling for Thai language
@@ -37,7 +40,7 @@ poetry install
 ### English Text to Phonemes
 
 ```python
-from transliterate.tokenizer import EnglishPhonemizer
+from transliterate.phonemizer import EnglishPhonemizer, setup_espeak
 
 # Initialize the phonemizer
 english_phonemizer = EnglishPhonemizer()
@@ -46,12 +49,13 @@ english_phonemizer = EnglishPhonemizer()
 text = "hippopotamus"
 phonemes = english_phonemizer.phonemize(text)
 print(f"English phonemes: {phonemes}")
+# Output: ['h', 'ɪ', 'p', 'ə', 'p', 'ɑː', 'ɾ', 'æ', 'm', 'ə', 's']
 ```
 
 ### Thai Text to Phonemes
 
 ```python
-from transliterate.tokenizer import ThaiPhonemizer
+from transliterate.phonemizer import ThaiPhonemizer
 
 # Initialize the phonemizer
 thai_phonemizer = ThaiPhonemizer()
@@ -60,6 +64,7 @@ thai_phonemizer = ThaiPhonemizer()
 text = "สวัสดี"
 phonemes = thai_phonemizer.phonemize(text)
 print(f"Thai phonemes: {phonemes}")
+# Output: ['s', 'a2', 'w', 'a2', 't', 'd', 'iː']
 ```
 
 ### Setup espeak (optional)
@@ -73,16 +78,16 @@ setup_espeak('/path/to/libespeak.dylib')
 
 ```plaintext
 transliterate/
+├── phonemizer/
+│   ├── __init__.py
+│   ├── base_phonemizer.py     # Abstract base class for phonemizers
+│   ├── english_phonemizer.py  # English language phonemizer
+│   ├── thai_phonemizer.py     # Thai language phonemizer
+│   └── utils.py               # Utility functions
 ├── thai/
 │   ├── core.py               # Thai text to IPA conversion
 │   ├── exceptions.py         # Special case handling for Thai words or syllables
 │   └── tokenizer.py          # Custom word tokenization
-├── phonemizer/
-│   ├── __init__.py
-│   ├── base_tokenizer.py     # Abstract base class for tokenizers
-│   ├── english_tokenizer.py  # English language tokenizer
-│   ├── thai_tokenizer.py     # Thai language tokenizer
-│   └── utils.py              # Utility functions
 └── utils/
     ├── phoneme_converter.py  # IPA to phoneme conversion
     ├── punctuations.py       # Punctuation handling
