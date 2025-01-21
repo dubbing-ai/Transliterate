@@ -1,6 +1,6 @@
 from pythainlp.transliterate import transliterate
 from pythainlp.tokenize import syllable_tokenize
-from transliterate.utils.punctuations import Punctuations
+from ..utils.punctuations import Punctuations
 from .exceptions import exceptionWords
 from .tokenizer import CustomTokenizer
 
