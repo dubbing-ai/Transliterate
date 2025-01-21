@@ -54,10 +54,10 @@ def convert_text_to_ipa(text: str) -> str:
                     ipa_segments.append(' ')
             else:
                 regular_syllables.append(syllable)
-                if is_last_syllable:
-                    process_regular_syllables(is_last_syllable=True, is_word_end=True)
-                else:
-                    process_regular_syllables(is_last_syllable=False, is_word_end=False)
+                # if is_last_syllable:
+                #     process_regular_syllables(is_last_syllable=True, is_word_end=True)
+                # else:
+                #     process_regular_syllables(is_last_syllable=False, is_word_end=False)
         
         # Process syllables at word boundary
         # if not regular_syllables:
