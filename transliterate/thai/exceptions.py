@@ -14,6 +14,8 @@ def exceptionWords(word: str) -> str:
         'เชี๊ย': 'cʰiːa4',
         'เริ่ด': 'rɤt3', # เริด = rɤːt3 -> เริ่ด = rɤt3
         'กษัตริย์': 'ka2.sat2',
+        'ครํ่า': 'kʰram3',
+        'หวอด': 'wᴐːt2',
         'ครํ่าหวอด': 'kʰram3.wᴐːt2',
         'เนี่ยะ': 'nia3',
         'สจ๊วร์ต': 'sa2.cuːat4', # referred from 'สจ๊วด'
