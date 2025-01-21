@@ -1,6 +1,7 @@
 from pythainlp.transliterate import transliterate
 from pythainlp.tokenize import syllable_tokenize, word_tokenize
 from .exceptions import exceptionWords
+from .tokenizer import CustomTokenizer
 
 def convert_text_to_ipa(text: str) -> str:
     """
@@ -13,14 +14,17 @@ def convert_text_to_ipa(text: str) -> str:
         str: IPA representation of the input text
     """
     text = ' '.join(text.split())
-    words = word_tokenize(text)
+
+    custom_tokenizer = CustomTokenizer()
+    words = custom_tokenizer.word_tokenize(text)
+
     ipa_segments = []
     regular_syllables = []
     
     def process_regular_syllables(is_last_syllable: bool, is_word_end: bool):
         if regular_syllables:
-            combined = ''.join(regular_syllables)
-            # print("Regular syllables:", combined)
+            combined = ''.join(regular_syllables).strip()
+            print("Regular syllables:", combined)
             if ipa := transliterate(combined, engine='tltk_ipa'):
                 ipa_segments.append(ipa)
 
@@ -38,7 +42,7 @@ def convert_text_to_ipa(text: str) -> str:
         # print("Current ipa_segments", ipa_segments)
 
     for word in words:
-        # print("word: ", word)
+        print("word: ", word)
         if word == " ":
             process_regular_syllables(is_last_syllable=True, is_word_end=True)
 
@@ -48,6 +52,7 @@ def convert_text_to_ipa(text: str) -> str:
 
         syllables = syllable_tokenize(word)
         for i, syllable in enumerate(syllables):
+            print("syllable: ", syllable)
             is_first_syllable = i == 0
             is_last_syllable = i == len(syllables) - 1
 
