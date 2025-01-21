@@ -21,7 +21,8 @@ def CustomTokenizer() -> Tokenizer:
         'เจฟฟรี่',
         'ไฟน์สโตน',
         'ไฮด์',
-        'โกล์ด'
+        'โกล์ด',
+        'โฮล์ม'
     }
 
     # Combine core dictionary with custom words
