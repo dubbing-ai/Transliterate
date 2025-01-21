@@ -20,10 +20,17 @@ def CustomTokenizer() -> Tokenizer:
     custom_words = {
         'เจฟฟรี่',
         'ไฟน์สโตน',
+        'ไฮด์',
+        'โกล์ด',
+        'โฮล์ม',
+        'ไฟว์',
+        'ไซด์',
+        "เคลา",
+        "โวล์ฟ"
     }
 
     # Combine core dictionary with custom words
-    all_words = list(thai_words) + list(custom_words)
+    all_words = list(custom_words) + list(thai_words)
 
     # Create trie dictionary for efficient lookup
     custom_dict_trie = dict_trie(dict_source=all_words)

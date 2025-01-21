@@ -6,7 +6,7 @@ from .tokenizer import CustomTokenizer
 # Initialize CustomTokenizer once at module level
 _custom_tokenizer = CustomTokenizer()
 
-def convert_text_to_ipa(text: str) -> str:
+def convert_text_to_ipa(text: str, verbose: bool = False) -> str:
     """
     Convert Thai text to IPA representation.
     
@@ -38,6 +38,8 @@ def convert_text_to_ipa(text: str) -> str:
             regular_syllables.clear()
 
     for word in words:
+        if verbose:
+            print("Processing word: ", word)
         if word == " ":
             process_regular_syllables(is_last_syllable=True, is_word_end=True)
 
@@ -45,8 +47,16 @@ def convert_text_to_ipa(text: str) -> str:
                 ipa_segments.append(' ')
             continue
 
+        if ipa := exceptionWords(word):
+            process_regular_syllables(is_last_syllable=True, is_word_end=True)
+            ipa_segments.append(ipa)
+            ipa_segments.append(' ')
+            continue
+
         syllables = syllable_tokenize(word)
         for i, syllable in enumerate(syllables):
+            if verbose:
+                print("Processing syllable: ", syllable)
             is_first_syllable = i == 0
             is_last_syllable = i == len(syllables) - 1
 
