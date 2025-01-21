@@ -20,6 +20,7 @@ def CustomTokenizer() -> Tokenizer:
     custom_words = {
         'เจฟฟรี่',
         'ไฟน์สโตน',
+        'ไฮด์',
     }
 
     # Combine core dictionary with custom words
