@@ -19,6 +19,7 @@ A Python library for converting text into IPA (International Phonetic Alphabet) 
 - eSpeak library (for English phoneme conversion)
 - PyThaiNLP (for Thai language processing)
 - TLTK (for Thai language processing)
+- Pandas (required by TLTK)
 
 ## Installation
 
@@ -67,6 +68,18 @@ print(f"Thai phonemes: {phonemes}")
 # Output: ['s', 'a2', 'w', 'a2', 't', 'd', 'iː']
 ```
 
+### Thai Text to IPA
+
+```python
+from transliterate.thai.core import convert_text_to_ipa
+
+# Convert Thai text to IPA
+text = "สวัสดีครับ ผมชื่อนายแดง"
+ipa = convert_text_to_ipa(text)
+print(f"IPA representation: {ipa}")
+# Output: "sa2.wat2.diː1 kʰrap4 pʰom4 cʰɯː3 naːj1 dɛːŋ1"
+```
+
 ### Setup espeak (optional)
 
 ```python
@@ -77,30 +90,72 @@ setup_espeak('/path/to/libespeak.dylib')
 ## Project Structure
 
 ```plaintext
-transliterate/
-├── phonemizer/
-│   ├── __init__.py
-│   ├── base_phonemizer.py     # Abstract base class for phonemizers
-│   ├── english_phonemizer.py  # English language phonemizer
-│   ├── thai_phonemizer.py     # Thai language phonemizer
-│   └── utils.py               # Utility functions
-├── thai/
-│   ├── core.py               # Thai text to IPA conversion
-│   ├── exceptions.py         # Special case handling for Thai words or syllables
-│   └── tokenizer.py          # Custom word tokenization
-└── utils/
-    ├── phoneme_converter.py  # IPA to phoneme conversion
-    ├── punctuations.py       # Punctuation handling
-    └── vowels.py             # Thai vowel configurations
+.
+├── tests/
+│   ├── __init__.py           
+│   └── thai/
+│       ├── __init__.py
+│       └── test_core.py            # Thai language tests
+├── transliterate/
+│   ├── phonemizer/
+│   │   ├── __init__.py
+│   │   ├── base_phonemizer.py      # Abstract base class for phonemizers
+│   │   ├── english_phonemizer.py   # English language phonemizer
+│   │   ├── thai_phonemizer.py      # Thai language phonemizer
+│   │   └── utils.py
+│   ├── thai/
+│   │   ├── core.py                 # Thai text to IPA conversion
+│   │   ├── exceptions.py           # Special case handling for Thai words or syllables
+│   │   └── tokenizer.py            # Custom word tokenization
+│   └── utils/
+│       ├── phoneme_converter.py    # IPA to phoneme conversion
+│       ├── punctuations.py         # Punctuation handling
+│       └── vowels.py               # Thai vowel configurations
 ```
+
+## Testing
+
+The project includes comprehensive test suites for verifying the functionality of all components.
+
+### Running Tests
+
+Run all tests with:
+
+```bash
+poetry run pytest
+```
+
+Run specific test modules:
+
+```bash
+# Run Thai language tests
+poetry run pytest tests/thai/
+
+# Run specific test file
+poetry run pytest tests/thai/test_core.py
+
+# Run with verbose output
+poetry run pytest tests/thai/test_core.py -v
+```
+
+### Adding New Tests
+
+When adding new tests:
+
+1. Place test files in the appropriate directory under `tests/`
+2. Follow the existing naming convention: `test_*.py`
+3. Include docstrings explaining test purposes
+4. Add test cases in the relevant test categories
 
 ## Contributing
 
 1. Fork the repository.
 2. Create a feature branch (`git checkout -b feature-name`).
-3. Commit your changes (`git commit -m 'Add new feature'`).
-4. Push to the branch (`git push origin feature-name`).
-5. Open a Pull Request.
+3. Add tests for any new functionality.
+4. Ensure all tests pass (poetry run pytest).
+5. Commit your changes (`git commit -m 'Add new feature'`).
+6. Push to the branch (`git push origin feature-name`).
+7. Open a Pull Request.
 
 ## Acknowledgments
 
