@@ -24,7 +24,9 @@ def CustomTokenizer() -> Tokenizer:
         'โกล์ด',
         'โฮล์ม',
         'ไฟว์',
-        'ไซด์'
+        'ไซด์',
+        "เคลา",
+        "โวล์ฟ"
     }
 
     # Combine core dictionary with custom words
