@@ -28,7 +28,8 @@ def CustomTokenizer() -> Tokenizer:
         'เคลา',
         'โวล์ฟ',
         'ครํ่าหวอด',
-        'แทรกแซง'
+        'แทรกแซง',
+        'อฤศราณ์',
     }
 
     # Combine core dictionary with custom words

@@ -36,5 +36,7 @@ def exceptionWords(word: str) -> str:
         'โจช': 'coːt1',
         'โวล์ฟ': 'woːp3',
         'โหงวเฮ้ง': 'ŋoː5.heːŋ4',
+        # RU
+        'อฤศราณ์': 'ʔa2 rit4 sa2 raː1',
     }
     return dictionary.get(word, '')
