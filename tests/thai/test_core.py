@@ -21,6 +21,7 @@ class TestThaiCore:
             ("ความรัก", "kʰwaːm1.rak4"),
             ("ความสุข", "kʰwaːm1.suk2"),
             ("บ้านเรือน", "baːn3.rɯːan1"),
+            ("นกฮูก", "nok4.huːk3"),
         ]
         for input_text, expected in test_cases:
             assert convert_text_to_ipa(input_text) == expected
@@ -54,6 +55,7 @@ class TestThaiCore:
             ("พุทรา", "pʰut4.saː1"),
             ("ทริป", "tʰrip4"),
             ("โหงวเฮ้ง", "ŋoː5.heːŋ4"),
+            ("ลานจอดฮ", "laːn1.cᴐːt2 hᴐː1")
         ]
         for input_text, expected in test_cases:
             assert convert_text_to_ipa(input_text) == expected
@@ -95,7 +97,7 @@ class TestThaiCore:
             ("  สวัสดี  ", "sa2.wat2.diː1"),
             ("สวัสดี ครับ", "sa2.wat2.diː1 kʰrap4"),
             ("สวัสดี  ครับ", "sa2.wat2.diː1 kʰrap4"),
-            ("\nสวัสดี\t", "sa2.wat2.diː1")
+            ("\nสวัสดี\t", "sa2.wat2.diː1"),
         ]
         for input_text, expected in test_cases:
             assert convert_text_to_ipa(input_text) == expected
@@ -112,7 +114,7 @@ class TestThaiCore:
             ("สวัสดี!", "sa2.wat2.diː1"),
             ("สวัสดี, ครับ", "sa2.wat2.diː1 kʰrap4"),
             ("สวัสดี...", "sa2.wat2.diː1"),
-            ("(สวัสดี)", "sa2.wat2.diː1")
+            ("(สวัสดี)", "sa2.wat2.diː1"),
         ]
         for input_text, expected in test_cases:
             assert convert_text_to_ipa(input_text) == expected
