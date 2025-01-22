@@ -56,6 +56,8 @@ class TestThaiCore:
             ("ทริป", "tʰrip4"),
             ("โหงวเฮ้ง", "ŋoː5.heːŋ4"),
             ("ลานจอดฮ", "laːn1.cᴐːt2 hᴐː1")
+            ("หมง", "moŋ5"),
+            ("โหมงาน", "hoːm5 ŋaːn1"),
         ]
         for input_text, expected in test_cases:
             assert convert_text_to_ipa(input_text) == expected

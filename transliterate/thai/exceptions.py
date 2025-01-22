@@ -20,6 +20,7 @@ def exceptionWords(word: str) -> str:
         'เนี่ยะ': 'nia3',
         'สจ๊วร์ต': 'sa2.cuːat4', # referred from 'สจ๊วด'
         'ฮ': 'hᴐː1',
+        'หมง': 'moŋ5',
         # ทร-
         'แทรก': 'sɛːk3',
         'แทรง': 'sɛːŋ1',
