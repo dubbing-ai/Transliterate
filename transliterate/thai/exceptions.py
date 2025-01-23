@@ -27,6 +27,7 @@ def exceptionWords(word: str) -> str:
         'โทรม': 'soːm1',
         'ไทร': 'saj1',
         'ทริป': 'tʰrip4',
+        'ฉะเชิงเทรา': 'cʰa2.cʰɤːŋ1.saw1',
         # Transliteration
         'เจฟ': 'ceːp4',
         'ฟรี่': 'friː3',
