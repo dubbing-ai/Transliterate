@@ -4,12 +4,21 @@ version = "0.1.0"
 description = "A Python library to convert text to phoneme representations."
 authors = ["Thanat Wongsamut <thanat.wongsamut@gmail.com>", "Korawut Sirianuntapat <korawut_s@outlook.com>"]
 license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/dubbing-ai/Transliterate"
+repository = "https://github.com/dubbing-ai/Transliterate"
+documentation = "https://github.com/dubbing-ai/Transliterate#readme"
+keywords = ["nlp", "phonemes", "thai", "english", "text-processing"]
+packages = [
+    { include = "transliterate" }
+]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
 tltk = "^1.9.1"
 pythainlp = "^5.0.4"
 pandas = "^2.2.3"
+phonemizer = "^3.3.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
