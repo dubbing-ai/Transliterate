@@ -23,6 +23,18 @@ A Python library for converting text into IPA (International Phonetic Alphabet) 
 
 ## Installation
 
+Install directly from GitHub
+
+```bash
+# Using pip
+pip install git+https://github.com/dubbing-ai/Transliterate.git
+
+# Using poetry
+poetry add git+https://github.com/dubbing-ai/Transliterate.git
+```
+
+For development installation:
+
 1. Clone the repository:
 
 ```bash
@@ -30,7 +42,7 @@ git clone https://github.com/dubbing-ai/Transliterate.git
 cd Transliterate
 ```
 
-2. Install the package using Poetry:
+1. Install using poetry:
 
 ```bash
 poetry install
