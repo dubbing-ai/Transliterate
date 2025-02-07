@@ -19,7 +19,6 @@ A Python library for converting text into IPA (International Phonetic Alphabet) 
 - eSpeak library (for English phoneme conversion)
 - PyThaiNLP (for Thai language processing)
 - TLTK (for Thai language processing)
-- Pandas (required by TLTK)
 
 ## Installation
 
